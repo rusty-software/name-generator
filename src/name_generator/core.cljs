@@ -21,16 +21,15 @@
 
 (defn main-view []
   [:div
-   [:h1
-    "Generate names!"]
    [:div
     [:button
-     {:on-click #(generate-names)}
-     "Generate!"]]
-   [:div
+     {:class "button"
+      :on-click #(generate-names)}
+     "Generate names!"]]
+   [:ul
     (for [name (:names @app-state)]
       ^{:key name}
-      [:div name])]])
+      [:li name])]])
 
 (reagent/render-component [main-view]
                           (. js/document (getElementById "app")))
